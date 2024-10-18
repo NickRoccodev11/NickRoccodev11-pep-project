@@ -4,14 +4,12 @@ import Model.Account;
 import DAO.AccountDAOImpl;
 
 public class AccountService {
-  
-    private final AccountDAOImpl accountDAOImpl; 
 
-    
+    private final AccountDAOImpl accountDAOImpl;
+
     public AccountService(AccountDAOImpl accountDAOImpl) {
         this.accountDAOImpl = accountDAOImpl;
     }
-
 
     public boolean isUsernameTaken(String username) {
 
@@ -20,18 +18,11 @@ public class AccountService {
     }
 
     public int register(String username, String password) {
-        
-        if(username.isBlank()){
-            return -2;
-        }
 
-        if(password.length() < 4){
-            return -2;
-        }
-       
-        boolean isNameTaken  = accountDAOImpl.isUsernameTaken(username);
-        if(isNameTaken){
-            return -3;
+        boolean isNameTaken = accountDAOImpl.isUsernameTaken(username);
+
+        if (username.isBlank() || password.length() < 4 || isNameTaken) {
+            return -1;
         }
 
         return accountDAOImpl.register(username, password);
