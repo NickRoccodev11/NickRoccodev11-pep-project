@@ -45,10 +45,7 @@ public class SocialMediaController {
    }
 
    /**
-    * This is an example handler for an example endpoint.
-    * 
-    * @param context The Javalin Context object manages information about both the
-    *                HTTP request and response.
+    * @param context The Javalin Context object manages information about both the  HTTP request and response.
     */
 
    private void registerAccount(Context context) {
